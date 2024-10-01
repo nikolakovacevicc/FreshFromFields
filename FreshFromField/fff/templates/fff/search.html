@@ -1,0 +1,22 @@
+<!--Nikola Kovacevic 2021/0113-->
+{% extends 'main.html' %}
+
+{% block title %}
+Rezultati pretrage
+{% endblock title %}
+
+{% block content %}
+<div class="container" style="margin-top: 5%">
+    <h1>Rezultati pretrage</h1>
+
+    <ul>
+        {% for listing in listings %}
+        <li>
+            <a href="{% url 'listing' listing.pk %}">{{ listing.listingname }}</a>
+        </li>
+        {% empty %}
+        <li>Nema rezultata koji odgovaraju vašoj pretrazi.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

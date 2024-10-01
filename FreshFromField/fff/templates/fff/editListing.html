@@ -1,0 +1,58 @@
+<!--Djordje Loncar 2021/0076-->
+{% extends 'main.html' %}
+
+{% block title %}
+Izmena oglasa
+{% endblock title %}
+
+{% block content %}
+<div class="container" style="margin-top: 5%">
+    <h1>Izmena oglasa:</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>Greška:</strong> Molimo vas da ispravite greške u formi.
+            <ul>
+                {% for field, errors in form.errors.items %}
+                <li>{{ field }}: {{ errors }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <table>
+            <tr>
+                <td>Naziv oglasa:</td>
+                <td>{{ form.listingname }}</td>
+            </tr>
+            <tr>
+                <td>Tip proizvoda:</td>
+                <td>{{ form.type }}</td>
+            </tr>
+            <tr>
+                <td>Cena:</td>
+                <td>{{ form.price }}</td>
+            </tr>
+            <tr>
+                <td>Jedinica mere:</td>
+                <td>{{ form.unit }}</td>
+            </tr>
+            <tr>
+                <td>Kolicina:</td>
+                <td>{{ form.quantity }}</td>
+            </tr>
+            <tr>
+                <td>Opis oglasa:</td>
+                <td>{{ form.description }}</td>
+            </tr>
+            <tr>
+                <td>Slika:</td>
+                <td>{{ form.image }}</td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit" id="sacuvajOglas">Sačuvaj promene</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock content %}
